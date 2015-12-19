@@ -14,7 +14,7 @@ import commandregistry
 #initialize command registry
 cmdReg = commandregistry.CommandRegistry()
 
-print("\n#####UVic Aero Command Registry#####")
+print("\n##### UVic Aero Command Registry #####")
 
 while(True):
 	print(">> ", end="")

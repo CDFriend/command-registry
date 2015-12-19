@@ -29,11 +29,13 @@ class CommandRegistry(object):
 		#split the command string into the command name and arguments
 		splitInput = commandString.split(" ")
 		if splitInput[0] in self.cmdReg:
-			#TODO: add error handling and logging capabilities here
-			cmdName = splitInput[0]
-			if (len(splitInput) > 1):
-				splitInput.remove(cmdName) #list of arguments
-			self.cmdReg[cmdName](splitInput) #execute the code
+			try:
+				cmdName = splitInput[0]
+				if (len(splitInput) > 1):
+					splitInput.remove(cmdName) #list of arguments
+				self.cmdReg[cmdName](splitInput) #execute the code
+			except BaseException as e:
+				print("Command failed to execute.\n{0}: {1}".format(type(e).__name__, e.args))
 		else:
 			#TODO: integrate error messages into the logging system
 			print("Command not found.")
